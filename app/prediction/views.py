@@ -9,7 +9,7 @@ import numpy as np
 import os
 
 def predict(request):
-    if request.method == 'GET':
+    if request.method in ('GET', 'HEAD'):
         form = ImageUploadForm()
         return render(request, 'home.html', {'form': form})
     if request.method == 'POST':
