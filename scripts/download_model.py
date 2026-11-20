@@ -2,7 +2,7 @@ import os
 from huggingface_hub import hf_hub_download
 
 REPO_ID = "koji520/racket_classifier"
-FILENAME = "racket_classifier_model.keras"
+FILENAME = "racket_classifier_model.onnx"
 LOCAL_DIR = "app/prediction/models"
 
 os.makedirs(LOCAL_DIR, exist_ok=True)
