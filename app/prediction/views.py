@@ -14,6 +14,7 @@ def predict(request):
         form = ImageUploadForm(request.POST, request.FILES)
         if form.is_valid():
             # POST時のみTensorFlowを読み込む
+            print("1. before tf import", flush=True)
             from tensorflow.keras.models import load_model
             from tensorflow.keras.preprocessing.image import img_to_array, load_img
 
@@ -31,8 +32,11 @@ def predict(request):
                     "models",
                     "racket_classifier_model.keras",
                 )
+                print("2. before load_model", flush=True)
                 model = load_model(model_path, compile=False)
+                print("3. before inference", flush=True)
                 result = model(img_array, training=False).numpy()
+                print("4. after inference", flush=True)
                 max_result = int(np.argmax(result[0]))
 
                 match max_result:
