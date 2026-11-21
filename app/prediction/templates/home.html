@@ -9,12 +9,32 @@
   <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.as_p }}
+    <input id="img_data" type="hidden" name="img_data" />
+    <img id="preview" style="display: none;" />
     <button type="submit">判定</button>
   </form>
 
   {% if prediction %}
-    <h2>判定結果</h2>
-    <p>あなたのアップロードした画像は「{{ prediction }}」でしょう。</p>
+    <div id="prediction">
+      <h2>判定結果</h2>
+      <p>あなたのアップロードした画像は「{{ prediction }}」でしょう。</p>
+      <img src="{{ img_data }}"> 
+    </div>
   {% endif %}
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+    $(function() {
+        $('#id_image').on('change', function() {
+        var reader = new FileReader();
+        reader.onload = function () {
+            $("#preview").attr('src', reader.result);
+            $("#preview").show();
+            $("#img_data").val(reader.result);
+        }
+        reader.readAsDataURL(this.files[0]);
+        $("#prediction").text('');
+        });
+    });
+  </script>
 </body>
 </html>
