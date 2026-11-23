@@ -8,6 +8,18 @@
 source .venv/bin/activate
 ```
 
+### パッケージのインストール
+
+```
+uv sync --frozen
+```
+
+### AIモデルのダウンロード
+
+```
+python scripts/download_model.py
+```
+
 ### 開発サーバー起動
 
 ```
