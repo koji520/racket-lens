@@ -6,7 +6,8 @@ import numpy as np
 import onnxruntime as ort
 from PIL import Image
 
-LABELS = ["Pure Aero", "Pure Drive", "Ezone", "Vcore"]
+from .sources import RACKETS
+
 TARGET_SIZE = (256, 256)
 
 
@@ -48,4 +49,4 @@ def predict_racket(uploaded_file):
   probs = outputs[0][0]
   idx = int(np.argmax(probs))
 
-  return LABELS[idx] if idx < len(LABELS) else "どれでもない"
+  return RACKETS[idx] if idx < len(RACKETS) else "どれでもない"
