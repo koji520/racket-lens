@@ -19,7 +19,6 @@
       <br>
       <button type="submit" class="btn btn-primary btn-lg">判定</button>
     </form>
-
     {% if prediction %}
       <div id="prediction">
         <hr>
@@ -28,6 +27,7 @@
         <img src="{{ img_data }}" class="img-fluid mb-3">
       </div>
     {% endif %}
+    <div class="mt-4">※現在判定に対応しているラケット一覧は<a href="/description">こちら</a></div>
   </div>
 
   <script>

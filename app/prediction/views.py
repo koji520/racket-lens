@@ -2,7 +2,7 @@ from django.shortcuts import render
 
 from .forms import ImageUploadForm
 from .inference import predict_racket
-
+from .sources import RACKETS
 
 def predict(request):
   if request.method == "POST":
@@ -17,3 +17,6 @@ def predict(request):
     form = ImageUploadForm()
 
   return render(request, "home.html", {"form": form})
+
+def description(request):
+  return render(request, "description.html", {"rackets": RACKETS})
