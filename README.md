@@ -1,6 +1,6 @@
 # racket-lens
 
-##　コマンド
+## コマンド
 
 ### 仮想環境 activate
 
